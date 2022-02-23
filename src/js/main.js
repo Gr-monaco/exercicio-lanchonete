@@ -7,7 +7,7 @@ document.addEventListener("click", function(e) {
     } 
 } )
 
-function GetTime(){
+function GetTime(){s
     var time = document.createElement("p");
     var today = new Date();
     time.textContent = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
