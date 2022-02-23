@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Nome_lanchonete</h1>
+    </div>
+
+    <form action="">
+        <label for="telefone">Telefone</label> <input type="text" name="telefone" id="telefone"><br>
+        <label for="nomeCliente">Nome cliente</label> <input type="text" name="nomeCliente" id="nomeCliente"><br>
+        <label for="">Combos</label> <select name="combos" id="combos">
+            <option value="xsaudavel">X-Saudável</option>
+            <option value="xvegan">X-Vegan</option>
+            <option value="combocasal">Combo casal</option>
+        </select><br>
+        <label for="">Adicionais</label>
+        <div>
+            <input type="checkbox" name="bacon" id="bacon"> <label for="bacon">Bacon</label><br>
+            <input type="checkbox" name="cheddar" id="cheddar"> <label for="cheddar">Cheddar</label><br>
+            <input type="checkbox" name="picles" id="picles"> <label for="picles">Picles</label><br>
+        </div><br>
+        <div>
+            <label for="">Entrega?</label><br>
+            <input type="radio" name="entrega" id="viagem"> <label for="viagem">Para viagem</label><br>
+            <input type="radio" name="entrega" id="balcao"> <label for="balcao">Balcão</label><br>
+        </div><br>
+
+        <div>
+            <button type="button"  class="buttonCalcular">Calcular</button> 
+            <button type="button"  class="buttonNovoPedido">Novo Pedido</button> 
+            <button type="button"  class="buttonRecibo">Recibo</button>
+        </div>
+        <div>
+            <p>Total a pagar</p>
+            <input type="text"> <br>
+            <p>Descrição</p>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+        </div>
+    </form>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
