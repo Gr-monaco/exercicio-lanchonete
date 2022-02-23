@@ -1,4 +1,4 @@
-const head = document.querySelector(".header"); //Lembre que só pega o primeiro elemento
+const head = document.getElementById("header"); //Lembre que só pega o primeiro elemento
 
 
 document.addEventListener("click", function(e) {
@@ -7,7 +7,7 @@ document.addEventListener("click", function(e) {
     } 
 } )
 
-function GetTime(){s
+function GetTime(){
     var time = document.createElement("p");
     var today = new Date();
     time.textContent = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();

@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../src/css/styles.css">
 </head>
 
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Nome_lanchonete</h1>
+        <div id="header" class="header rounded bg-lightblue">
+            <h1 class="m-1 p-2">Nome_lanchonete</h1>
         </div>
 
         <form action="">
@@ -95,10 +96,19 @@
                     <button type="button" class="btn btn-primary m-1">Recibo</button>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <p>Total a pagar:</p>
+                    <input type="text" class="form-control" id="totalapagar" aria-describedby="pagarHelp">
+                    <p>Total a pagar:</p>
+                    <textarea class="form-control" id="textareadecri" rows="3"></textarea>
+                </div>
+            </div>
         </form>
     </div>
 
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="../src/js/main.js"></script>
 </body>
 
 </html>
