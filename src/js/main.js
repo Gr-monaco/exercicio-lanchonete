@@ -1,5 +1,12 @@
 const head = document.getElementById("header"); //Lembre que só pega o primeiro elemento
 
+function comboOption(name, price, description){
+    this.name = name;
+    this.price = price;
+    this.description = description;
+}
+
+
 
 document.addEventListener("click", function(e) {
     if(e.target.classList.contains("buttonCalcular")){
@@ -7,6 +14,8 @@ document.addEventListener("click", function(e) {
     } 
 } )
 
+
+/** Função pega o tempo atual e coloca no header. */
 function GetTime(){
     var time = document.createElement("p");
     var today = new Date();
