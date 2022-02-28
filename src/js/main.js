@@ -1,7 +1,7 @@
 const head = document.getElementById("header"); //Lembre que só pega o primeiro elemento
 const comboBox = document.getElementById("combos");
 const outputPrice = document.getElementById("priceOutput");
-const outputDescription = document.getElementById("");
+const outputDescription = document.getElementById("textareadecri");
 
 let comboOptions = [];
 function comboOption(id, name, price, description){
@@ -14,6 +14,7 @@ function comboOption(id, name, price, description){
 document.addEventListener("click", function(e) {
     if(e.target.classList.contains("buttonCalcular")){
         CalculatePrice();
+        UpdateDescription();
     } 
 })
 
@@ -48,6 +49,19 @@ function PriceTable(checkbox){
     return 0; //Para caso dê algum problema e não ache valor
 }
 
+function GetDescriptionFromCheckbox(checkbox){
+    if (checkbox.id === "bacon") return "+ Bacon";
+    if (checkbox.id === "cheddar") return "+ Cheddar";
+    if (checkbox.id === "picles") return "+ Picles";
+}
+
+/**
+ * Realmente preciso aprender JQuery...
+ */
+function GetOptionOfCombo(){
+    return comboBox[comboBox.selectedIndex];
+}
+
 /**
  * Calcula o preço pegando os items selecionados.
  */
@@ -61,6 +75,27 @@ function CalculatePrice(){
         })
 
         outputPrice.value = price;
+    }
+}
+
+function GetDescriptionFromComboBox(){
+    for(var combo of comboOptions){
+        if(combo.id === Number(GetOptionOfCombo().id)){
+            return combo.description;
+        }
+    }
+}
+
+function UpdateDescription(){
+    if(comboBox.value !== null || comboBox.value !== undefined ){
+        let description = GetDescriptionFromComboBox();
+        let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+
+        checkboxes.forEach( (e) => {
+            description += `\n ${GetDescriptionFromCheckbox(e)}`;
+        })
+
+        outputDescription.value = description;
     }
 }
 
