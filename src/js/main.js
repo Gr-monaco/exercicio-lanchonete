@@ -33,7 +33,6 @@ function AddItemsToCombo(){
         let option = document.createElement("option");
         option.text = e.name;
         option.id = e.id;
-        option.value = e.price;
         comboBox.add(option, i);
     })
 }
@@ -67,7 +66,7 @@ function GetOptionOfCombo(){
  */
 function CalculatePrice(){
     if(comboBox.value !== null || comboBox.value !== undefined ){
-        let price = Number(comboBox.value);
+        let price = GetPriceFromComboBox();
         let checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
 
         checkboxes.forEach( (e) => {
@@ -75,6 +74,14 @@ function CalculatePrice(){
         })
 
         outputPrice.value = price;
+    }
+}
+
+function GetPriceFromComboBox(){
+    for(var combo of comboOptions){
+        if(combo.id === Number(GetOptionOfCombo().id)){
+            return combo.price;
+        }
     }
 }
 
