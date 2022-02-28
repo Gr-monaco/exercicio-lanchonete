@@ -1,5 +1,8 @@
 const head = document.getElementById("header"); //Lembre que só pega o primeiro elemento
 const comboBox = document.getElementById("combos");
+const outputPrice = document.getElementById("priceOutput");
+const outputDescription = document.getElementById("");
+
 let comboOptions = [];
 function comboOption(id, name, price, description){
     this.id = id
@@ -10,7 +13,7 @@ function comboOption(id, name, price, description){
 
 document.addEventListener("click", function(e) {
     if(e.target.classList.contains("buttonCalcular")){
-        
+        CalculatePrice();
     } 
 })
 
@@ -29,10 +32,37 @@ function AddItemsToCombo(){
         let option = document.createElement("option");
         option.text = e.name;
         option.id = e.id;
+        option.value = e.price;
         comboBox.add(option, i);
     })
 }
 
+/**
+ * Tabela de preços
+ * Talvez implementar um GET de um banco de dados?
+ */
+function PriceTable(checkbox){
+    if (checkbox.id === "bacon") return 3;
+    if (checkbox.id === "cheddar") return 5;
+    if (checkbox.id === "picles") return 2;
+    return 0; //Para caso dê algum problema e não ache valor
+}
+
+/**
+ * Calcula o preço pegando os items selecionados.
+ */
+function CalculatePrice(){
+    if(comboBox.value !== null || comboBox.value !== undefined ){
+        let price = Number(comboBox.value);
+        let checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+
+        checkboxes.forEach( (e) => {
+            price += PriceTable(e);
+        })
+
+        outputPrice.value = price;
+    }
+}
 
 /** Função pega o tempo atual e coloca no header. */
 function GetTime(){
