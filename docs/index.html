@@ -16,6 +16,7 @@
     <div class="container">
         <div id="header" class="header rounded bg-lightblue">
             <h1 class="m-1 p-2">Nome_lanchonete</h1>
+            <p class="m-3" id="timer"></p>
         </div>
         <!-- Começa aqui -->
         <form id="formulario" action="" class="">
@@ -47,9 +48,9 @@
                         <div class="col">
                             <label for="">Adicionais</label>
                             <div>
-                                <input type="checkbox" name="bacon" id="bacon"> <label for="bacon">Bacon</label><br>
-                                <input type="checkbox" name="cheddar" id="cheddar"> <label for="cheddar">Cheddar</label><br>
-                                <input type="checkbox" name="picles" id="picles"> <label for="picles">Picles</label><br>
+                                <input type="checkbox" class="adicionais" name="bacon" id="bacon"> <label for="bacon">Bacon</label><br>
+                                <input type="checkbox" class="adicionais" name="cheddar" id="cheddar"> <label for="cheddar">Cheddar</label><br>
+                                <input type="checkbox" class="adicionais" name="picles" id="picles"> <label for="picles">Picles</label><br>
                             </div>
                         </div>
                         <div class="col">
@@ -70,7 +71,7 @@
                 <div class="col text-center m-3">
                     <button type="button" id="Calcular" class="btn btn-primary m-1 buttonCalcular">Calcular</button>
                     <button type="button" class="buttonNovoPedido btn btn-primary m-1">Novo Pedido</button>
-                    <button type="button" class="btn btn-primary m-1">Recibo</button>
+                    <button type="button" class="buttonRecibo btn btn-primary m-1">Recibo</button>
                 </div>
             </div>
             <!-- Saidas? -->

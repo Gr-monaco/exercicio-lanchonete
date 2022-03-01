@@ -2,13 +2,22 @@ const head = document.getElementById("header"); //Lembre que só pega o primeiro
 const comboBox = document.getElementById("combos");
 const outputPrice = document.getElementById("priceOutput");
 const outputDescription = document.getElementById("textareadecri");
+const timer = document.getElementById("timer");
 let deliveryOption = document.querySelector('input[name="entrega"]:checked');
 
 let comboOptions = [];
 function comboOption(id, name, price, description) {
-    this.id = id
+    this.id = id;
     this.name = name;
     this.price = price;
+    this.description = description;
+}
+function pedido(telefone, nome, total,adicionais,entrega, description){
+    this.telefone = telefone;
+    this.nome = nome;
+    this.total = total;
+    this.adicionais = [];
+    this.entrega = entrega;
     this.description = description;
 }
 
@@ -60,8 +69,37 @@ document.addEventListener("click", function (e) {
     }
     if (e.target.classList.contains("buttonNovoPedido")){
         $("#formulario").validate().resetForm();
+        //https://stackoverflow.com/questions/6653556/jquery-javascript-function-to-clear-all-the-fields-of-a-form
+        $('#formulario').trigger("reset");
+    }
+    if (e.target.classList.contains("buttonRecibo")){
+        if ($("#formulario").valid()) {
+            CalculatePrice();
+            UpdateDescription();
+            OrderToJson();
+        }
     }
 })
+
+//https://stackoverflow.com/questions/8963693/how-to-create-json-string-in-javascript
+function OrderToJson(){
+    let pedidosJson = new pedido();
+
+    pedidosJson.nome = $("input[name=nomeCliente]")[0].value;
+    pedidosJson.telefone = $("input[name=telefone]")[0].value;
+    pedidosJson.description = $("#textareadecri")[0].value;
+    pedidosJson.entrega = GetDeliveryDescription(document.querySelector('input[name="entrega"]:checked'));
+    pedidosJson.total = $("#priceOutput")[0].value;
+
+    let checkbox = $('.adicionais:checkbox:checked');
+    if(checkbox.length !== 0){
+        checkbox.each(function(i,e) {
+            pedidosJson.adicionais.push(e.name);
+        });
+    }
+    console.log(JSON.stringify(pedidosJson));
+    alert(JSON.stringify(pedidosJson))
+}
 
 /** 
  *  Função para adicionar items no comboBox
@@ -89,7 +127,7 @@ function AddItemsToCombo() {
  */
 function PriceTable(checkbox) {
     if (checkbox.id === "bacon") return 3;
-    if (checkbox.id === "cheddar") return 5;
+    if (checkbox.id === "cheddar") return 5.5;
     if (checkbox.id === "picles") return 2;
     return 0; //Para caso dê algum problema e não ache valor
 }
@@ -119,7 +157,9 @@ function CalculatePrice() {
             price += PriceTable(e);
         })
 
-        outputPrice.value = price;
+        let final = parseFloat(price).toFixed(2)
+        Number(final).toLocaleString();
+        outputPrice.value =   `R$ ${final}`;
     }
 }
 
@@ -162,11 +202,10 @@ function UpdateDescription() {
 
 /** Função pega o tempo atual e coloca no header. */
 function GetTime() {
-    var time = document.createElement("p");
     var today = new Date();
-    time.textContent = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    head.appendChild(time);
+    timer.textContent = today.toLocaleTimeString();
 }
 
 GetTime();
+setInterval(GetTime, 1000);
 AddItemsToCombo();
