@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="../src/css/styles.css">
 </head>
@@ -16,19 +18,19 @@
             <h1 class="m-1 p-2">Nome_lanchonete</h1>
         </div>
         <!-- Começa aqui -->
-        <form action="">
+        <form id="formulario" action="" class="">
             <!-- Primeira linha -->
             <div class="row">
                 <div class="col">
                     <div class="mb-3">
                         <label for="telefone" class="form-label">Telefone</label>
-                        <input type="text" class="form-control" id="telefone" aria-describedby="telefoneHelp">
+                        <input type="text" class="form-control" name="telefone" id="telefone" required aria-describedby="telefoneHelp">
                     </div>
                 </div>
                 <div class="col">
                     <div class="mb-3">
                         <label for="nomeCliente" class="form-label">Nome cliente</label>
-                        <input type="text" class="form-control" name="nomeCliente" id="nomeCliente"><br>
+                        <input type="text" class="form-control" name="nomeCliente" required minlength="5" id="nomeCliente"><br>
                     </div>
                 </div>
             </div>
@@ -52,10 +54,11 @@
                         </div>
                         <div class="col">
                             <div>
-                                <label for="">Entrega?</label><br>
-                                <input type="radio" name="entrega" id="viagem"> <label for="viagem">Para
+                                <label for="entrega">Entrega?</label><br>
+                                <input type="radio" name="entrega" required id="viagem"> <label for="viagem">Para
                                     viagem</label><br>
                                 <input type="radio" name="entrega" id="balcao"> <label for="balcao">Balcão</label><br>
+                                <label for="entrega" class="error" style="display:none;">Please choose one.</label>
                             </div>
                         </div>
 
@@ -65,7 +68,7 @@
             <!-- Terceira linhas - Botões -->
             <div class="row">
                 <div class="col text-center m-3">
-                    <button type="button" class="btn btn-primary m-1 buttonCalcular">Calcular</button>
+                    <button type="button" id="Calcular" class="btn btn-primary m-1 buttonCalcular">Calcular</button>
                     <button type="button" class="btn btn-primary m-1">Novo Pedido</button>
                     <button type="button" class="btn btn-primary m-1">Recibo</button>
                 </div>
@@ -83,8 +86,8 @@
         </form>
     </div>
 
-    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="../src/js/main.js"></script>
+
 </body>
 
 </html>
