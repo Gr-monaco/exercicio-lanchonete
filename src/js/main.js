@@ -58,6 +58,9 @@ document.addEventListener("click", function (e) {
             UpdateDescription();
         }
     }
+    if (e.target.classList.contains("buttonNovoPedido")){
+        $("#formulario").validate().resetForm();
+    }
 })
 
 /** 
