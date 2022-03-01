@@ -2,3 +2,7 @@
     background-color: lightblue;
     border: solid 2px rgb(64, 128, 150);
 }
+
+.error {
+    color: red;
+}
